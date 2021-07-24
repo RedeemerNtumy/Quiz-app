@@ -32,6 +32,15 @@ class QuizMain extends StatefulWidget {
 }
 
 class _QuizMainState extends State<QuizMain> {
+  List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    "The CPU is responsible for executing instructions for the Computer",
+    "Main memory is a place where the programs and data are stored temporarily during processing",
+    "Pseudo-code uses exact programming language syntax to represent a module in the larger program",
+    "Secondary storage,similar to main memory,also stores programs and data",
+    "Writing Code is the first step in the waterfall model of developing software"
+  ];
+  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,7 +53,7 @@ class _QuizMainState extends State<QuizMain> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                "This is where the text would go",
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -61,7 +70,14 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.green,
               child: TextButton(
                 style: ButtonStyle(),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    questionNumber = questionNumber + 1;
+                    if (questionNumber == 5) {
+                      questionNumber = 0;
+                    }
+                  });
+                },
                 child: Text(
                   "True",
                   style: TextStyle(color: Colors.white, fontSize: 20),
@@ -76,7 +92,14 @@ class _QuizMainState extends State<QuizMain> {
             child: Container(
               color: Colors.red,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    questionNumber = questionNumber + 1;
+                    if (questionNumber == 5) {
+                      questionNumber = 0;
+                    }
+                  });
+                },
                 child: Text(
                   "False",
                   style: TextStyle(color: Colors.white, fontSize: 20),
@@ -85,9 +108,9 @@ class _QuizMainState extends State<QuizMain> {
             ),
           ),
         ),
-        Row(children: [
-          
-        ],)
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
