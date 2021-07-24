@@ -57,12 +57,15 @@ class _QuizMainState extends State<QuizMain> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15),
-            child: TextButton(
-              style: ButtonStyle(),
-              onPressed: () {},
-              child: Text(
-                "True",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+            child: Container(
+              color: Colors.green,
+              child: TextButton(
+                style: ButtonStyle(),
+                onPressed: () {},
+                child: Text(
+                  "True",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
             ),
           ),
@@ -70,15 +73,21 @@ class _QuizMainState extends State<QuizMain> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                "False",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+            child: Container(
+              color: Colors.red,
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  "False",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
             ),
           ),
-        )
+        ),
+        Row(children: [
+          
+        ],)
       ],
     );
   }
