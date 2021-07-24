@@ -76,6 +76,7 @@ class _QuizMainState extends State<QuizMain> {
                     if (questionNumber == 5) {
                       questionNumber = 0;
                     }
+                    
                   });
                 },
                 child: Text(
