@@ -50,7 +50,7 @@ class _QuizMainState extends State<QuizMain> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.questions[questionNumber].question,
+                quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -68,7 +68,7 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  bool correctAnswer = quizBrain.questions[questionNumber].answer;
+                  bool correctAnswer = quizBrain.getQuestionAns(questionNumber);
                   if (correctAnswer == true) {}
                   setState(() {
                     questionNumber++;
@@ -92,7 +92,7 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
-                  bool correctAnswer = quizBrain.questions[questionNumber].answer;
+                  bool correctAnswer = quizBrain.getQuestionAns(questionNumber);
                   if (correctAnswer == false) {}
                   setState(() {
                     questionNumber++;
