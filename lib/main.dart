@@ -43,7 +43,6 @@ class _QuizMainState extends State<QuizMain> {
     Question(q:"Writing Code is the first step in the waterfall model of developing software",a:false)
   ];
   int questionNumber = 0;
-  List<bool> answers = [true, true, false, true, false];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,7 +55,7 @@ class _QuizMainState extends State<QuizMain> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                questions[questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -74,7 +73,7 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  bool correctAnswer = answers[questionNumber];
+                  bool correctAnswer = questions[questionNumber].answer;
                   if (correctAnswer == true) {}
                   setState(() {
                     questionNumber++;
@@ -98,7 +97,7 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
-                  bool correctAnswer = answers[questionNumber];
+                  bool correctAnswer = questions[questionNumber].answer;
                   if (correctAnswer == false) {}
                   setState(() {
                     questionNumber++;
