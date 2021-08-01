@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'questions.dart';
 
 void main() {
   runApp(Quiz());
@@ -33,6 +34,21 @@ class QuizMain extends StatefulWidget {
 
 class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
+  Question q1 = Question(
+      q: "The CPU is responsible for executing instructions for the Computer",
+      a: true);
+  Question q2 = Question(
+      q: "Main memory is a place where the programs and data are stored temporarily during processing",
+      a: true);
+  Question q3 = Question(
+      q: "Pseudo-code uses exact programming language syntax to represent a module in the larger program",
+      a: false);
+  Question q4 = Question(
+      q:     "Secondary storage,similar to main memory,also stores programs and data",
+      a: true);
+  Question q5 = Question(
+      q: "Writing Code is the first step in the waterfall model of developing software",
+      a: false);
   List<String> questions = [
     "The CPU is responsible for executing instructions for the Computer",
     "Main memory is a place where the programs and data are stored temporarily during processing",
@@ -41,6 +57,7 @@ class _QuizMainState extends State<QuizMain> {
     "Writing Code is the first step in the waterfall model of developing software"
   ];
   int questionNumber = 0;
+  List<bool> answers = [true, true, false, true, false];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -71,12 +88,13 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == true) {}
                   setState(() {
-                    questionNumber = questionNumber + 1;
+                    questionNumber++;
                     if (questionNumber == 5) {
                       questionNumber = 0;
                     }
-                    
                   });
                 },
                 child: Text(
@@ -94,8 +112,10 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == false) {}
                   setState(() {
-                    questionNumber = questionNumber + 1;
+                    questionNumber++;
                     if (questionNumber == 5) {
                       questionNumber = 0;
                     }
