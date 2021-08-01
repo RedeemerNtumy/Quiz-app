@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'questions.dart';
+import 'functions.dart';
+
+Functions quizBrain = Functions();
 
 void main() {
   runApp(Quiz());
@@ -34,14 +36,7 @@ class QuizMain extends StatefulWidget {
 
 class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
-  
-  List<Question> questions = [
-    Question(q:"The CPU is responsible for executing instructions for the Computer",a:true),
-    Question(q:"Main memory is a place where the programs and data are stored temporarily during processing",a:true),
-    Question(q:"Pseudo-code uses exact programming language syntax to represent a module in the larger program",a:false),
-    Question(q:"Secondary storage,similar to main memory,also stores programs and data",a:true),
-    Question(q:"Writing Code is the first step in the waterfall model of developing software",a:false)
-  ];
+
   int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +50,7 @@ class _QuizMainState extends State<QuizMain> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                questions[questionNumber].question,
+                quizBrain.questions[questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -73,7 +68,7 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  bool correctAnswer = questions[questionNumber].answer;
+                  bool correctAnswer = quizBrain.questions[questionNumber].answer;
                   if (correctAnswer == true) {}
                   setState(() {
                     questionNumber++;
@@ -97,7 +92,7 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
-                  bool correctAnswer = questions[questionNumber].answer;
+                  bool correctAnswer = quizBrain.questions[questionNumber].answer;
                   if (correctAnswer == false) {}
                   setState(() {
                     questionNumber++;
