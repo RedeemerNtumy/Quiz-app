@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'functions.dart';
 
 Functions quizBrain = Functions();
-
 void main() {
   runApp(Quiz());
 }
@@ -38,14 +37,23 @@ class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
   void checkAnswer(bool chosenAnswer) {
     bool correctAnswer = quizBrain.getQuestionAns();
-    if (chosenAnswer == correctAnswer) {
-      scoreKeeper.add(Icon(Icons.check,color: Colors.green,));
-    } else {
-     scoreKeeper.add(Icon(Icons.close,color: Colors.red,));
+    int numberOfQuestions = quizBrain.getQuestionlength();
+    if (scoreKeeper.length != numberOfQuestions) {
+      if (chosenAnswer == correctAnswer) {
+        scoreKeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        scoreKeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      setState(() {
+        quizBrain.nextQuestion();
+      });
     }
-    setState(() {
-      quizBrain.nextQuestion();
-    });
   }
 
   @override

@@ -20,9 +20,13 @@ class Functions {
         a: false)
   ];
   void nextQuestion() {
-    if (_questionNumber < _questions.length -1) {
+    if (_questionNumber < _questions.length - 1) {
       _questionNumber++;
     }
+  }
+
+  int getQuestionlength() {
+    return _questions.length;
   }
 
   String getQuestionText() {
