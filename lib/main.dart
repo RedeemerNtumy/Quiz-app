@@ -58,6 +58,7 @@ class _QuizMainState extends State<QuizMain> {
       }
       if (quizBrain.isFinished()) {
         Alert(
+          style: AlertStyle(isCloseButton: false),
           context: context,
           title: "End of Quiz",
           desc: "You had 20 points",
