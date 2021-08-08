@@ -36,4 +36,14 @@ class Functions {
   bool getQuestionAns() {
     return _questions[_questionNumber].answer;
   }
+
+  bool isFinished() {
+    bool answer;
+    if (_questions.length == _questionNumber + 1) {
+      answer = true;
+    } else {
+      answer = false;
+    }
+    return answer;
+  }
 }

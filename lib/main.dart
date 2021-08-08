@@ -41,19 +41,29 @@ class _QuizMainState extends State<QuizMain> {
     int numberOfQuestions = quizBrain.getQuestionlength();
     if (scoreKeeper.length != numberOfQuestions) {
       if (chosenAnswer == correctAnswer) {
-        scoreKeeper.add(Icon(
-          Icons.check,
-          color: Colors.green,
-        ));
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
       } else {
-        scoreKeeper.add(Icon(
-          Icons.close,
-          color: Colors.red,
-        ));
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
       }
-      setState(() {
-        quizBrain.nextQuestion();
-      });
+      setState(
+        () {
+          quizBrain.nextQuestion();
+        },
+      );
+      if (quizBrain.isFinished()) {
+        Alert(context: context, title: "End of Quiz", desc: "You had 20 points")
+            .show();
+      }
     }
   }
 
