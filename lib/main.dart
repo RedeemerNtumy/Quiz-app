@@ -39,9 +39,9 @@ class _QuizMainState extends State<QuizMain> {
   void checkAnswer(bool chosenAnswer) {
     bool correctAnswer = quizBrain.getQuestionAns();
     if (chosenAnswer == correctAnswer) {
-      print("User is correct");
+      scoreKeeper.add(Icon(Icons.check));
     } else {
-      print("User got it wrong");
+     scoreKeeper.add(Icon(Icons.close));
     }
     setState(() {
       quizBrain.nextQuestion();
