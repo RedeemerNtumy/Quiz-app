@@ -36,6 +36,17 @@ class QuizMain extends StatefulWidget {
 
 class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
+  void checkAnswer(bool chosenAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAns();
+    if (chosenAnswer == correctAnswer) {
+      print("User is correct");
+    } else {
+      print("User got it wrong");
+    }
+    setState(() {
+      quizBrain.nextQuestion();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +78,7 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  bool correctAnswer = quizBrain.getQuestionAns();
-                  if (correctAnswer == true) {}
-                  setState(() {
-                    quizBrain.nextQuestion();
-                  });
+                  checkAnswer(true);
                 },
                 child: Text(
                   "True",
@@ -88,11 +95,7 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
-                  bool correctAnswer = quizBrain.getQuestionAns();
-                  if (correctAnswer == false) {}
-                  setState(() {
-                    quizBrain.nextQuestion();
-                  });
+                  checkAnswer(false);
                 },
                 child: Text(
                   "False",
