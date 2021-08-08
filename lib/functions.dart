@@ -1,6 +1,7 @@
 import 'questions.dart';
 
 class Functions {
+  int _questionNumber = 0;
   List<Question> _questions = [
     Question(
         q: "The CPU is responsible for executing instructions for the Computer",
@@ -18,11 +19,17 @@ class Functions {
         q: "Writing Code is the first step in the waterfall model of developing software",
         a: false)
   ];
-  String getQuestionText(int questionNumber) {
-    return _questions[questionNumber].question;
+  void nextQuestion() {
+    if (_questionNumber < _questions.length -1) {
+      _questionNumber++;
+    }
   }
 
-  bool getQuestionAns(int questionNumber) {
-    return _questions[questionNumber].answer;
+  String getQuestionText() {
+    return _questions[_questionNumber].question;
+  }
+
+  bool getQuestionAns() {
+    return _questions[_questionNumber].answer;
   }
 }

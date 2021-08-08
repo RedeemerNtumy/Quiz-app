@@ -37,7 +37,6 @@ class QuizMain extends StatefulWidget {
 class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
 
-  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,7 +49,7 @@ class _QuizMainState extends State<QuizMain> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(questionNumber),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -68,13 +67,10 @@ class _QuizMainState extends State<QuizMain> {
               child: TextButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  bool correctAnswer = quizBrain.getQuestionAns(questionNumber);
+                  bool correctAnswer = quizBrain.getQuestionAns();
                   if (correctAnswer == true) {}
                   setState(() {
-                    questionNumber++;
-                    if (questionNumber == 5) {
-                      questionNumber = 0;
-                    }
+                    quizBrain.nextQuestion();
                   });
                 },
                 child: Text(
@@ -92,13 +88,10 @@ class _QuizMainState extends State<QuizMain> {
               color: Colors.red,
               child: TextButton(
                 onPressed: () {
-                  bool correctAnswer = quizBrain.getQuestionAns(questionNumber);
+                  bool correctAnswer = quizBrain.getQuestionAns();
                   if (correctAnswer == false) {}
                   setState(() {
-                    questionNumber++;
-                    if (questionNumber == 5) {
-                      questionNumber = 0;
-                    }
+                    quizBrain.nextQuestion();
                   });
                 },
                 child: Text(
