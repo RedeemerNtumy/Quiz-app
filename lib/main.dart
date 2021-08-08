@@ -37,6 +37,7 @@ class QuizMain extends StatefulWidget {
 
 class _QuizMainState extends State<QuizMain> {
   List<Icon> scoreKeeper = [];
+  int questionsRight = 0;
   void checkAnswer(bool chosenAnswer) {
     bool correctAnswer = quizBrain.getQuestionAns();
     int numberOfQuestions = quizBrain.getQuestionlength();
@@ -48,6 +49,7 @@ class _QuizMainState extends State<QuizMain> {
             color: Colors.green,
           ),
         );
+        questionsRight++;
       } else {
         scoreKeeper.add(
           Icon(
@@ -61,7 +63,7 @@ class _QuizMainState extends State<QuizMain> {
           style: AlertStyle(isCloseButton: false),
           context: context,
           title: "End of Quiz",
-          desc: "You had 20 points",
+          desc: "You had $questionsRight/$numberOfQuestions questions right",
           buttons: [
             DialogButton(
               color: Colors.red,
@@ -79,7 +81,9 @@ class _QuizMainState extends State<QuizMain> {
                 "START AGAIN",
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
-              onPressed: () {},
+              onPressed: () {
+                quizBrain.reset();
+              },
               width: 120,
             )
           ],

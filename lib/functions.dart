@@ -37,6 +37,10 @@ class Functions {
     return _questions[_questionNumber].answer;
   }
 
+  void reset() {
+    _questionNumber = 0;
+  }
+
   bool isFinished() {
     bool answer;
     if (_questions.length == _questionNumber + 1) {
