@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'functions.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -56,8 +57,32 @@ class _QuizMainState extends State<QuizMain> {
         );
       }
       if (quizBrain.isFinished()) {
-        Alert(context: context, title: "End of Quiz", desc: "You had 20 points")
-            .show();
+        Alert(
+          context: context,
+          title: "End of Quiz",
+          desc: "You had 20 points",
+          buttons: [
+            DialogButton(
+              color: Colors.red,
+              child: Text(
+                "QUIT",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                SystemNavigator.pop();
+              },
+              width: 120,
+            ),
+            DialogButton(
+              child: Text(
+                "START AGAIN",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {},
+              width: 120,
+            )
+          ],
+        ).show();
       }
       setState(
         () {
