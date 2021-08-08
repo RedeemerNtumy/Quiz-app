@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'functions.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 Functions quizBrain = Functions();
 void main() {
-  runApp(Quiz());
+  runApp(
+    Phoenix(
+      child: Quiz(),
+    ),
+  );
 }
 
 class Quiz extends StatelessWidget {
@@ -83,6 +88,7 @@ class _QuizMainState extends State<QuizMain> {
               ),
               onPressed: () {
                 quizBrain.reset();
+                Phoenix.rebirth(context);
               },
               width: 120,
             )
