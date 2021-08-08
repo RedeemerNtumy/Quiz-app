@@ -55,15 +55,15 @@ class _QuizMainState extends State<QuizMain> {
           ),
         );
       }
+      if (quizBrain.isFinished()) {
+        Alert(context: context, title: "End of Quiz", desc: "You had 20 points")
+            .show();
+      }
       setState(
         () {
           quizBrain.nextQuestion();
         },
       );
-      if (quizBrain.isFinished()) {
-        Alert(context: context, title: "End of Quiz", desc: "You had 20 points")
-            .show();
-      }
     }
   }
 
